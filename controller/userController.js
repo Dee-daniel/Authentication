@@ -1,6 +1,6 @@
-const User = require('../model/user')
-const bcrypt = require('bcrypt')
-
+const User = require('../model/user');
+const bcrypt = require("bcrypt");
+const {response} = require ('express');
 //error handling
 //integrate views
 //authenticatioin - jsonwebtoken
@@ -24,10 +24,10 @@ const register = async (req, res) => {
     // we want to create the user 
     try {
         const user = await User.create ({email, password: hashedPassword});
-        res.status(201).json({success:true, data: user});
+        res.status(201).send({success:true, data: user});
     }catch (error) {
-        console.log(error);
-        res.status(500).json({msg: error});
+        console.log(err);
+        res.status(500).send({msg: "error"});
     }
 };
 

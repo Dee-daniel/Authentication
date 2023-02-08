@@ -1,0 +1,17 @@
+npm i bcrypt
+npm i validator
+
+salting - generating random string - nuhwui783yu34yu
+
+refactoring , error handling, mongoose hooks (middeware)
+
+authentication (session based(cookies) and token based)
+protecting route using authentication
+intergrating ejs views
+
+//session base tokens this is when we are talking about cookies, can be used for analytic or authentication
+//tokens dont use cookies we are sending to the front end as  a data
+integrating ejs views 
+i-ejs
+--setting view engine
+--views - sign up, login , dashboard
