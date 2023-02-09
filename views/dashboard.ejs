@@ -11,7 +11,9 @@
     body {background-color: powderblue;}
     h1   {color: blue;}
     ul   {color: red; padding-left: 5vw;  }
-
+    p    {padding-left: 5vw ;}
+    h2   {color: brown;}
+    .logout  {padding-left: 90vw;}
 </style>
 
 <body>
@@ -20,11 +22,25 @@
     <nav>
         <ul>
             <li><a href="/dashboard">Homepage</a></li>
-            <li style="color:blue;"><a href="/register">signup</a></li>
-            <li><a href="/login">Login</a></li>
+            <li style="color:blue;"><a href="/register">Signup</a></li>
+            <li><a href="/login">Log In</a></li>
         </ul>  
     </nav>
-     
+
+    <marquee behavior="" direction=""><h2>WELCOME TO MY HOME PAGE</h2></marquee>
+    
+    <% if (email){%>
+        <h1> Welcome<%= email %></h1>
+    <%}%>
+
+    
+    
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique cum,
+        laborum reprehenderit assumenda nobis <br> unde aliquam molestias fugit! 
+        Aut magni quia expedita eos exercitationem sit quaerat repellendus 
+        praesentium asperiores error.
+    </p>
+    <a class="logout" href="/logout">LOG OUT</a>
 
 </body>
 </html>

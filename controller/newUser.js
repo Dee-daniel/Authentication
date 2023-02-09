@@ -1,6 +1,13 @@
 const Users = require ('../model/user')
 const bcrypt = require ('bcrypt')
 
+const jwt = require ('jsonwebtoken');
+
+//headers, payload - id, signature
+const generateToken = (id) => {
+    return jwt.sign({ id }, process.env.JWT_SECRET, {});
+}
+
 const handleErrors = (err) => {
     //err messages err codes -- 11000
     let errors = {email: "", password: "",}
@@ -55,6 +62,10 @@ const login = async (req, res) => {
         if (user) {
             const authenticated = await bcrypt.compare (password, user.password)
             if (authenticated) {
+                //token set
+                const token = generateToken(user._id);
+                const time = 2 * 60 * 1000;
+                res.cookie("jwt", token, {maxAge: time});
                 return res.status(201)
                 .json({success: true, data: user})
 
@@ -69,5 +80,21 @@ const login = async (req, res) => {
     }         
 };
 
+const signup = (req, res) => {
+    res.status(200).render('signup', {title:'Signup'})
+}
 
-module.exports = {register, login};
+const signin = (req, res) => {
+    res.status(200).render('login', {title:'Login'})
+}
+
+const dashboard = (req, res) => {
+    res.status(200).render('dashboard', {title:'Dashboard'})
+
+}
+
+const logout = (req, res) => {
+    res.cookie('jwt', '', {masAge: 1000})
+    res.redirect ('/login')
+}
+module.exports = {logout, register, login, signin, signup, dashboard};

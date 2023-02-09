@@ -1,0 +1,1 @@
+const handleErrors = require('../middleware/handleErrors');
